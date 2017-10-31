@@ -1,3 +1,5 @@
+emacs.font: DejaVu Sans Mono-9
+
 URxvt.scrollBar: false
 
 ! Scrollbar style - rxvt (default), plain (most compact), next, or xterm
