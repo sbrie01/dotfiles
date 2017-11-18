@@ -1,4 +1,4 @@
-;;; ==================================================
+; ==================================================
 ;;; repositories
 ;;; ==================================================
 
@@ -148,6 +148,10 @@ Updates upon loading any new theme."
 (use-package ac-html
   :ensure t)
 
+;; boot jei
+(use-package jedi
+  :ensure t)
+
 ;;; ==================================================
 ;;; tweaks
 ;;; ================================================== 
@@ -168,14 +172,23 @@ Updates upon loading any new theme."
 (windmove-default-keybindings)
 
 ;; load theme
-;; (defvar after-load-theme-hook nil
+;; (defvar after-load-themehook nil
   ;; "Hook run after a color theme is loaded using load-theme`.")
 ;; (add-hook 'after-load-theme-hook 'fit-neotree-styles)
 
 ;; (defadvice load-theme (after run-after-load-theme-hook-activate)
   ;; "Run `after-load-theme-hook`."
   ;; (run-hooks 'after-load-theme-hook))
-(load-theme 'rebecca t)
+
+;; (load-theme 'rebecca t)
+;; (load-theme 'wombat t)
+;; (load-theme 'dracula t)
+(load-theme 'xresources t)
+
+;; jedi stuffs
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(setq jedi:environment-root "jedi")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -188,7 +201,7 @@ Updates upon loading any new theme."
    (vector "#eaeaea" "#d54e53" "DarkOliveGreen3" "#e7c547" "DeepSkyBlue1" "#c397d8" "#70c0b1" "#181a26"))
  '(custom-safe-themes
    (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" "1bd383f15ee7345c270b82c5e41554754b2a56e14c2ddaa2127c3590d0303b95" "6c7db7fdf356cf6bde4236248b17b129624d397a8e662cf1264e41dab87a4a9a" "2016cdf6b11ed21f40a2246ca86d8c97ee77208bf1739467f8b00d1c0d1adc70" "1177fe4645eb8db34ee151ce45518e47cc4595c3e72c55dc07df03ab353ad132" "3b31ebd74082c6a3043dfd8112069163978330e21cfc9e6ff2c9798dfd6d6505" "5d7e1a089a0392827c1a1a626c93f2be5cf1a108a5f86663e9f1eed67fd094ea" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "1e67765ecb4e53df20a96fb708a8601f6d7c8f02edb09d16c838e465ebe7f51b" default)))
+    ("1195d71dfd46c43492993a528336ac7f8c7400b4c58338e5b40329d6cad655b6" "e1943fd6568d49ec819ee3711c266a8a120e452ba08569045dd8f50cc5ec5dd3" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "4e4d9f6e1f5b50805478c5630be80cce40bee4e640077e1a6a7c78490765b03f" "1bd383f15ee7345c270b82c5e41554754b2a56e14c2ddaa2127c3590d0303b95" "6c7db7fdf356cf6bde4236248b17b129624d397a8e662cf1264e41dab87a4a9a" "2016cdf6b11ed21f40a2246ca86d8c97ee77208bf1739467f8b00d1c0d1adc70" "1177fe4645eb8db34ee151ce45518e47cc4595c3e72c55dc07df03ab353ad132" "3b31ebd74082c6a3043dfd8112069163978330e21cfc9e6ff2c9798dfd6d6505" "5d7e1a089a0392827c1a1a626c93f2be5cf1a108a5f86663e9f1eed67fd094ea" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "1e67765ecb4e53df20a96fb708a8601f6d7c8f02edb09d16c838e465ebe7f51b" default)))
  '(debug-on-error t)
  '(fci-rule-color "#3f1a1a")
  '(global-linum-mode t)
@@ -197,7 +210,7 @@ Updates upon loading any new theme."
  '(org-fontify-whole-heading-line t)
  '(package-selected-packages
    (quote
-    (postcss-sorting company-tern company solarized-theme yasnippet-snippets yasnippet rebecca-theme inkpot-theme emmet tern-auto-complete less-css-mode web-beautify faces+ multiple-cursors theme-changer sublimity minimap web-mode tabbar color-theme-wombat list-packages-ext tern ac-html paganini-theme afternoon-theme yoshi-theme kaolin-theme color-theme neotree emmet-mode which-key try use-package)))
+    (magit xresources-theme melancholy-theme php-mode dracula-theme elpy json-mode jedi-direx jedi markdown-mode logstash-conf auto-indent-mode yaml-mode postcss-sorting company-tern company solarized-theme yasnippet-snippets yasnippet rebecca-theme inkpot-theme emmet tern-auto-complete less-css-mode web-beautify faces+ multiple-cursors theme-changer sublimity minimap web-mode tabbar color-theme-wombat list-packages-ext tern ac-html paganini-theme afternoon-theme yoshi-theme kaolin-theme color-theme neotree emmet-mode which-key try use-package)))
  '(rainbow-delimiters-max-face-count 10)
  '(tabbar-separator (quote (0.5)))
  '(vc-annotate-background nil)
@@ -258,6 +271,14 @@ buffer is not visiting a file."
   ;; (let ((face (or (get-char-property (pos) 'read-face-name)
 	      ;; (get-char-property (pos) 'face))))
     ;; (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+(defun minify-buffer-contents()
+  "Minifies the buffer contents by removing whitespaces."
+  (interactive)
+  (delete-whitespace-rectangle (point-min) (point-max))
+  (mark-whole-buffer)
+  (goto-char (point-min))
+  (while (search-forward "\n" nil t) (replace-match "" nil t)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

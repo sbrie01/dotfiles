@@ -13,6 +13,12 @@ URxvt*background: #1B1B1B
 URxvt*foreground: white
 !URxvt*foreground: #00FF00
 
+! XTerm keybinds for moving around through text
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5
+
 ! Other colors
 URxvt*color0: black
 !URxvt*color1: red3

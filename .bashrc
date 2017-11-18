@@ -15,3 +15,4 @@ export PATH=/home/sarai/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:
 export SPARK_HOME=/usr/local/spark
 export PYTHONPATH=/usr/local/spark/python/lib/py4j-0.10.4-src.zip:/usr/local/spark/python/lib/pyspark.zip:/usr/local/spark/python
 alias emacs="emacs -nw"
+alias ll="ls -al"
