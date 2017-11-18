@@ -122,3 +122,27 @@ super + alt + shift + {j,k,i,l}
 # move a floating window
 alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+## volume settings
+#
+
+# raise volume
+XF86AudioRaiseVolume
+    amixer sset Master 3+
+
+# lower volume
+XF86AudioLowerVolume
+    amixer sset Master 3- 
+
+# toggle mute
+XF86AudioMute
+    amixer sset Master toggle
+
+#
+## other mappings
+#
+
+# take screenshot w/ prompt
+alt + Print
+    xfce4-screenshooter
